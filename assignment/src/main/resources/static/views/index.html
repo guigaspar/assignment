@@ -20,7 +20,7 @@
         <!-- USERNAME -->
         <div class="form-group">
             <label>Risco</label>
-		    <select class="form-control" ng-model="customerDto.risc" ng-model="required" required>
+		    <select class="form-control" ng-model="customerDto.risc" required>
 		      <option>A</option>
 		      <option>B</option>
 		      <option>C</option>
@@ -29,7 +29,7 @@
 
         <div class="form-group">
 	   	  <label for="money">Limite de Credito</label>
-	   	  <input type="number" class="form-control" style="display:inline-block" ng-model="customerDto.creditLimit" required/>
+	   	  <input type="text" id="currency" data-thousands="." data-decimal="," data-prefix="R$ " ng-model="customerDto.creditLimit" class="form-control" required/> 
 	  	</div>
 
         <!-- SUBMIT BUTTON -->
@@ -46,12 +46,18 @@
  
 </div>
 </body>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/jquery.maskMoney.min.js"></script>
 <script src="js/lib/angular.min.js"></script>
 <script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
-<script src="js/lib/jquery.mask.min.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/CustomerController.js"></script>
 <script src="js/app/CustomerService.js"></script>
+<script>
+  $(function() {
+    $('#currency').maskMoney();
+  })
+</script>
 <link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/app/app.css"/>
 </html>

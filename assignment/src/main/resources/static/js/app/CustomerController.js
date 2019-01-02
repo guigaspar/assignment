@@ -13,6 +13,9 @@ module.controller("CustomerController", [ "$scope", "CustomerService",
 			};
 
 			$scope.saveCustomer = function() {
+				
+				$scope.customerDto.creditLimit = $('#currency').maskMoney('unmasked')[0];
+				
 				CustomerService.saveCustomer($scope.customerDto).then(function() {
 					console.log("works");
 					CustomerService.getAllCustomers().then(function(value) {
