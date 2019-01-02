@@ -1,9 +1,8 @@
 'use strict'
 
-var module = angular.module('gui.controllers', []);
-module.controller("CustomerController", [ "$scope", "CustomerService",
-		function($scope, CustomerService) {
-			
+var module = angular.module('gui.controllers', ["ngTable"]);
+module.controller("CustomerController", [ "$scope", "CustomerService", "NgTableParams", 
+		function($scope, CustomerService, NgTableParams) {
 			
 			$scope.customerDto = {
 				id : null,
@@ -26,17 +25,20 @@ module.controller("CustomerController", [ "$scope", "CustomerService",
 						console.log("no callback");
 					});
 
-
 					$scope.customerDto = {
 						id : null,
 						name : null,
 						risc : null,
-						
+						creditLimit : null
 					};
+					
 				}, function(reason) {
 					console.log("error occured");
 				}, function(value) {
 					console.log("no callback");
 				});
 			}
+			
+			$scope.customersTable = new NgTableParams({}, { dataset: $scope.allCustomers });
+			
 		} ]);
